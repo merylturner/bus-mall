@@ -15,9 +15,9 @@ function Item(name, filepath, numShown, numClicked, id) {
 
 };
 
-var bag = new Item('bag', 'imgs/bag.jpg', 0, 0, 'bag');
-var banana = new Item('banana', 'imgs/banana.jpg', 0, 0, 'banana');
-var bathroom = new Item('bathroom', 'imgs/bathroom.jpg', 0, 0, 'bathroom');
+var bag = new Item('bag', 'bag.jpg', 0, 0, 'bag');
+var banana = new Item('banana', 'banana.jpg', 0, 0, 'banana');
+var bathroom = new Item('bathroom', 'bathroom.jpg', 0, 0, 'bathroom');
 var boots = new Item('boots', 'imgs/boots.jpg', 0, 0, 'boots');
 var breakfast = new Item('breakfast', 'imgs/breakfast.jpg', 0, 0, 'breakfast');
 var bubblegum = new Item('bubblegum', 'imgs/bubblegum.jpg', 0, 0, 'bubblegum');
@@ -78,14 +78,14 @@ var tracker = {
     displayOptions: function () {
         //get 3 random items
         var randomItem = this.getIndex(allItems);
-        var index1 = randomItem[0];
-        var index2 = randomItem[1];
-        var index3 = randomItem[2];
-        console.log(index1);
+        // var index1 = randomItem[0];
+        // var index2 = randomItem[1];
+        // var index3 = randomItem[2];
+        // console.log(index1);
 
-        var item1 = allItems[index1];
-        var item2 = allItems[index2];
-        var item3 = allItems[index3];
+        var item1 = allItems[0];
+        var item2 = allItems[1];
+        var item3 = allItems[2];
         console.log(item1);
         console.log(allItems);
 
@@ -94,6 +94,7 @@ var tracker = {
         this.option2.src = item2.filepath;
         this.option3.src = item3.filepath;
         console.log(this.option1);
+
     },
 
     // tallyVote: function (id) {
