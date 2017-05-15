@@ -18,23 +18,23 @@ function Item(name, filepath, numShown, numClicked, id) {
 var bag = new Item('bag', 'bag.jpg', 0, 0, 'bag');
 var banana = new Item('banana', 'banana.jpg', 0, 0, 'banana');
 var bathroom = new Item('bathroom', 'bathroom.jpg', 0, 0, 'bathroom');
-var boots = new Item('boots', 'imgs/boots.jpg', 0, 0, 'boots');
-var breakfast = new Item('breakfast', 'imgs/breakfast.jpg', 0, 0, 'breakfast');
-var bubblegum = new Item('bubblegum', 'imgs/bubblegum.jpg', 0, 0, 'bubblegum');
-var chair = new Item('chair', 'imgs/chair.jpg', 0, 0, 'chair');
-var cthulhu = new Item('cthulhu', 'imgs/cthulhu.jpg', 0, 0, 'cthulhu');
-var dogDuck = new Item('dog duck', 'imgs/dog-duck.jpg', 0, 0, 'dog-duck');
-var dragon = new Item('dragon', 'imgs/dragon.jpg', 0, 0, 'dragon');
-var pen = new Item('pen', 'imgs/pen.jpg', 0, 0, 'pen');
-var petSweep = new Item('pet sweep', 'imgs/pet-sweep.jpg', 0, 0, 'pet-sweep');
-var scissors = new Item('scissors', 'imgs/scissors.jpg', 0, 0, 'scissors');
-var shark = new Item('shark', 'imgs/shark.jpg', 0, 0, 'shark');
-var sweep = new Item('sweep', 'imgs/sweep.jpg', 0, 0, 'sweep');
-var tauntaun = new Item('tauntaun', 'imgs/tauntaun.jpg', 0, 0, 'tauntaun');
-var unicorn = new Item('unicorn', 'imgs/unicorn.jpg', 0, 0, 'unicorn');
-var usb = new Item('usb', 'imgs/usb.gif', 0, 0, 'usb');
-var waterCan = new Item('water can', 'imgs/water-can.jpg', 0, 0, 'water-can');
-var wineGlass = new Item('wine glass', 'imgs/wine-glass.jpg', 0, 0, 'wine-glass');
+var boots = new Item('boots', 'boots.jpg', 0, 0, 'boots');
+var breakfast = new Item('breakfast', 'breakfast.jpg', 0, 0, 'breakfast');
+var bubblegum = new Item('bubblegum', 'bubblegum.jpg', 0, 0, 'bubblegum');
+var chair = new Item('chair', 'chair.jpg', 0, 0, 'chair');
+// var cthulhu = new Item('cthulhu', 'cthulhu.jpg', 0, 0, 'cthulhu');
+// var dogDuck = new Item('dog duck', 'dog-duck.jpg', 0, 0, 'dog-duck');
+// var dragon = new Item('dragon', 'dragon.jpg', 0, 0, 'dragon');
+// var pen = new Item('pen', 'pen.jpg', 0, 0, 'pen');
+// var petSweep = new Item('pet sweep', 'pet-sweep.jpg', 0, 0, 'pet-sweep');
+// var scissors = new Item('scissors', 'scissors.jpg', 0, 0, 'scissors');
+// var shark = new Item('shark', 'shark.jpg', 0, 0, 'shark');
+// var sweep = new Item('sweep', 'sweep.jpg', 0, 0, 'sweep');
+// var tauntaun = new Item('tauntaun', 'tauntaun.jpg', 0, 0, 'tauntaun');
+// var unicorn = new Item('unicorn', 'unicorn.jpg', 0, 0, 'unicorn');
+// var usb = new Item('usb', 'usb.gif', 0, 0, 'usb');
+// var waterCan = new Item('water can', 'water-can.jpg', 0, 0, 'water-can');
+// var wineGlass = new Item('wine glass', 'wine-glass.jpg', 0, 0, 'wine-glass');
 
 
 
@@ -56,20 +56,6 @@ var tracker = {
 // get random index and push to selected index array
     getIndex: function (arr) {
         var selectedIndex = [];
-        var item = this.randomIndex();
-        if (selectedIndex === 0) {
-            selectedIndex.push(item)
-        }
-        for (var i = 0; i < selectedIndex.length; i++) {
-            if (selectedIndex[i] === item) {
-                break;
-            }
-            else {
-                selectedIndex.push(item);
-                break;
-            }
-        }
-        return selectedIndex;
     },
 
 
@@ -77,15 +63,21 @@ var tracker = {
 
     displayOptions: function () {
         //get 3 random items
-        var randomItem = this.getIndex(allItems);
-        // var index1 = randomItem[0];
-        // var index2 = randomItem[1];
-        // var index3 = randomItem[2];
-        // console.log(index1);
+        var rand1 = this.randomIndex();
+        var rand2 = this.randomIndex();
+        var rand3 = this.randomIndex();
+        var theseDoMatch = rand1 === rand2 || rand1 === rand3 || rand2 === rand3;
 
-        var item1 = allItems[0];
-        var item2 = allItems[1];
-        var item3 = allItems[2];
+        while (theseDoMatch) {
+            //reassign value to variables
+            rand1 = this.randomIndex();
+            rand2 = this.randomIndex();
+            rand3 = this.randomIndex();
+        }
+
+        var item1 = allItems[rand1];
+        var item2 = allItems[rand2];
+        var item3 = allItems[rand3];
         console.log(item1);
         console.log(allItems);
 
