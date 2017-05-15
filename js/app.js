@@ -6,11 +6,14 @@ var allItems = [];
 
 function Item(name, filepath, numShown, numClicked, id) {
     this.name = name;
-    this.filepath = filepath;
+    this.filepath = 'imgs/' + filepath;
     this.numShown = numShown;
     this.numClicked = numClicked;
     this.id = id;
-}
+
+    allItems.push(this);
+
+};
 
 var bag = new Item('bag', 'imgs/bag.jpg', 0, 0, 'bag');
 var banana = new Item('banana', 'imgs/banana.jpg', 0, 0, 'banana');
@@ -44,15 +47,16 @@ var tracker = {
     displaySection: document.getElementById('display'),
     votes: 0,
 
-    randomIndex: function (array) {
-        return Math.floor(Math.random() * array.length);
+// get random number within allItems array.length
+    randomIndex: function (arr) {
+        return Math.floor(Math.random() * allItems.length);
     },
 
 
-
-    getIndex: function (array) {
+// get random index and push to selected index array
+    getIndex: function (arr) {
         var selectedIndex = [];
-        var item = this.randomIndex(array);
+        var item = this.randomIndex();
         if (selectedIndex === 0) {
             selectedIndex.push(item)
         }
@@ -69,6 +73,7 @@ var tracker = {
     },
 
 
+//display three options of products, using properties of tracker object
 
     displayOptions: function () {
         //get 3 random items
@@ -76,35 +81,39 @@ var tracker = {
         var index1 = randomItem[0];
         var index2 = randomItem[1];
         var index3 = randomItem[2];
+        console.log(index1);
 
         var item1 = allItems[index1];
         var item2 = allItems[index2];
         var item3 = allItems[index3];
+        console.log(item1);
+        console.log(allItems);
 
         // append items to DOM
-        this.option1.innerText = item1.name;
-        this.option2.innerText = item2.name;
-        this.option3.innerText = item3.name;
+        this.option1.src = item1.filepath;
+        this.option2.src = item2.filepath;
+        this.option3.src = item3.filepath;
+        console.log(this.option1);
     },
 
-    tallyVote: function (id) {
-        this.votes += 1;
+    // tallyVote: function (id) {
+    //     this.votes += 1;
 
-        for (var i = 0; i < allItems.length; i++) {
-            var item = allItems[i];
-            if (item.id === id) {
-                item.votes += 1;
-            }
-        }
-    },
+    //     for (var i = 0; i < allItems.length; i++) {
+    //         var item = allItems[i];
+    //         if (item.id === id) {
+    //             item.votes += 1;
+    //         }
+    //     }
+    // },
 
-    showResults: function () {
-        this.displaySection.removeEventListener('click', voteHandler);
-        for (var i = 0; i < allItems.length; i++) {
-            var item = allItems[i];
-            console.log(item.name + ': ' + item.votes);
-        }
-    }
+    // showResults: function () {
+    //     this.displaySection.removeEventListener('click', voteHandler);
+    //     for (var i = 0; i < allItems.length; i++) {
+    //         var item = allItems[i];
+    //         console.log(item.name + ': ' + item.votes);
+    //     }
+    // }
 
 }
 
@@ -115,10 +124,10 @@ function voteHandler() {
     if (event.target.id !== 'display')
         tracker.tallyVote(event.target.id);
     tracker.displayOptions();
-}
+};
 
 
-// tracker.displayOptions();
+tracker.displayOptions();
 
 
 
