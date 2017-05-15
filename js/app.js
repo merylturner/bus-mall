@@ -38,9 +38,9 @@ var wineGlass = new Item('wine glass', 'imgs/wine-glass.jpg', 0, 0, 'wine-glass'
 //          DISPLAY & VOTING FUNCTIONS            //
 //literal notation
 var tracker = {
-    option1: document.getElementsByClassName(option1)[0],
-    option2: document.getElementsByClassName(option2)[0],
-    option3: document.getElementsByClassName(option3)[0],
+    option1: document.getElementsByClassName('option1')[0],
+    option2: document.getElementsByClassName('option2')[0],
+    option3: document.getElementsByClassName('option3')[0],
     displaySection: document.getElementById('display'),
     votes: 0,
 
@@ -48,40 +48,77 @@ var tracker = {
         return Math.floor(Math.random() * array.length);
     },
 
+
+
     getIndex: function (array) {
         var selectedIndex = [];
-        while (selectedIndex.length < 3) {
-            var item = this.randomIndex(array);
-
-            if (selectedIndex.indexOf(item) === -1) {
-                selectedIndex.push(item);
+        var item = this.randomIndex(array);
+        if (selectedIndex === 0) {
+            selectedIndex.push(item)
+        }
+        for (var i = 0; i < selectedIndex.length; i++) {
+            if (selectedIndex[i] === item) {
+                break;
             }
+            else {
+                selectedIndex.push(item);
+                break;
+            }
+        }
+        return selectedIndex;
+    },
+
+
+
+    displayOptions: function () {
+        //get 3 random items
+        var randomItem = this.getIndex(allItems);
+        var index1 = randomItem[0];
+        var index2 = randomItem[1];
+        var index3 = randomItem[2];
+
+        var item1 = allItems[index1];
+        var item2 = allItems[index2];
+        var item3 = allItems[index3];
+
+        // append items to DOM
+        this.option1.innerText = item1.name;
+        this.option2.innerText = item2.name;
+        this.option3.innerText = item3.name;
+    },
+
+    tallyVote: function (id) {
+        this.votes += 1;
+
+        for (var i = 0; i < allItems.length; i++) {
+            var item = allItems[i];
+            if (item.id === id) {
+                item.votes += 1;
+            }
+        }
+    },
+
+    showResults: function () {
+        this.displaySection.removeEventListener('click', voteHandler);
+        for (var i = 0; i < allItems.length; i++) {
+            var item = allItems[i];
+            console.log(item.name + ': ' + item.votes);
         }
     }
 
-    return selectedIndex;
 }
 
-displayOptions: function () {
-    //get 3 random items
-    var randomItem = this.getIndex( allItems );
-    var index1 = randomItem[0];
-    var index2 = randomItem[1];
-    var index3 = randomItem[2];
+//            EVENT LISTENERS         //
 
-    var item1 = allItems[index1]
-    var item2 = allItems[index2]
-    var item3 = allItems[index3]
-
-    // append items to DOM
-    this.option1.innerText = item1.name;
-    this.option2.innerText = item2.name;
-    this.option3.innerText = item3.name;
-
+tracker.displaySection.addEventListener('click', voteHandler);
+function voteHandler() {
+    if (event.target.id !== 'display')
+        tracker.tallyVote(event.target.id);
+    tracker.displayOptions();
 }
 
 
-
+// tracker.displayOptions();
 
 
 
