@@ -93,13 +93,10 @@ var tracker = {
         var item3 = allItems[randNum[2]];
 
 
-        // console.log(allItems);
-
         //create array of firstRound results
         this.firstRound = [randNum[0], randNum[1], randNum[2]];
 
         // console.log(this.firstRound);
-
 
 
         // append items to DOM
