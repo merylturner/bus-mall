@@ -1,4 +1,5 @@
 'use strict';
+console.log( Chart );
 //          DATA            //
 var allItems = [];
 
