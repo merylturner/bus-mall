@@ -80,7 +80,7 @@ var tracker = {
             if (selectedIndex.indexOf(itemIndex) === -1 && previousItems.indexOf(itemIndex) === -1) {
                 selectedIndex.push(itemIndex);
                 console.log(allItems[itemIndex]);
-                arr.shown += 1;
+                allItems[itemIndex].shown += 1;
             }
         };
         //return items in the index array(items on the screen)
