@@ -125,10 +125,11 @@ var tracker = {
 
     showResults: function () {
         this.displaySection.removeEventListener('click', voteHandler);
-        for (var i = 0; i < 26; i++) {
+        function voteHandler () {
+            for (var i = 0; i < 26; i++) {
             // var item = allItems[i];
             console.log(item.name + ': ' + item.votes);
-        }
+            }
     }
 
 }
