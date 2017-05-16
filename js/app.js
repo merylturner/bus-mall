@@ -7,45 +7,53 @@ var allItems = [];
 function Item(name, filepath, numShown, numClicked, id) {
     this.name = name;
     this.filepath = 'imgs/' + filepath;
-    this.numShown = numShown;
-    this.numClicked = numClicked;
+    this.numShown = 0;
+    this.numClicked = 0;
     this.id = id;
+    this.votes = 0;
 
     allItems.push(this);
 
 };
 
-var bag = new Item('bag', 'bag.jpg', 0, 0, 'bag');
-var banana = new Item('banana', 'banana.jpg', 0, 0, 'banana');
-var bathroom = new Item('bathroom', 'bathroom.jpg', 0, 0, 'bathroom');
-var boots = new Item('boots', 'boots.jpg', 0, 0, 'boots');
-var breakfast = new Item('breakfast', 'breakfast.jpg', 0, 0, 'breakfast');
-var bubblegum = new Item('bubblegum', 'bubblegum.jpg', 0, 0, 'bubblegum');
-var chair = new Item('chair', 'chair.jpg', 0, 0, 'chair');
-var cthulhu = new Item('cthulhu', 'cthulhu.jpg', 0, 0, 'cthulhu');
-var dogDuck = new Item('dog duck', 'dog-duck.jpg', 0, 0, 'dog-duck');
-var dragon = new Item('dragon', 'dragon.jpg', 0, 0, 'dragon');
-var pen = new Item('pen', 'pen.jpg', 0, 0, 'pen');
-var petSweep = new Item('pet sweep', 'pet-sweep.jpg', 0, 0, 'pet-sweep');
-var scissors = new Item('scissors', 'scissors.jpg', 0, 0, 'scissors');
-var shark = new Item('shark', 'shark.jpg', 0, 0, 'shark');
-var sweep = new Item('sweep', 'sweep.png', 0, 0, 'sweep');
-var tauntaun = new Item('tauntaun', 'tauntaun.jpg', 0, 0, 'tauntaun');
-var unicorn = new Item('unicorn', 'unicorn.jpg', 0, 0, 'unicorn');
-var usb = new Item('usb', 'usb.gif', 0, 0, 'usb');
-var waterCan = new Item('water can', 'water-can.jpg', 0, 0, 'water-can');
-var wineGlass = new Item('wine glass', 'wine-glass.jpg', 0, 0, 'wine-glass');
-
+function instantiateItems() {
+    var bag = new Item('bag', 'bag.jpg', 'bag');
+    var banana = new Item('banana', 'banana.jpg', 'banana');
+    var bathroom = new Item('bathroom', 'bathroom.jpg', 'bathroom');
+    var boots = new Item('boots', 'boots.jpg', 'boots');
+    var breakfast = new Item('breakfast', 'breakfast.jpg', 'breakfast');
+    var bubblegum = new Item('bubblegum', 'bubblegum.jpg', 'bubblegum');
+    var chair = new Item('chair', 'chair.jpg', 'chair');
+    var cthulhu = new Item('cthulhu', 'cthulhu.jpg', 'cthulhu');
+    var dogDuck = new Item('dog duck', 'dog-duck.jpg', 'dog-duck');
+    var dragon = new Item('dragon', 'dragon.jpg', 'dragon');
+    var pen = new Item('pen', 'pen.jpg', 'pen');
+    var petSweep = new Item('pet sweep', 'pet-sweep.jpg', 'pet-sweep');
+    var scissors = new Item('scissors', 'scissors.jpg', 'scissors');
+    var shark = new Item('shark', 'shark.jpg', 0, 0, 'shark');
+    var sweep = new Item('sweep', 'sweep.png', 0, 0, 'sweep');
+    var tauntaun = new Item('tauntaun', 'tauntaun.jpg', 0, 0, 'tauntaun');
+    var unicorn = new Item('unicorn', 'unicorn.jpg', 0, 0, 'unicorn');
+    var usb = new Item('usb', 'usb.gif', 0, 0, 'usb');
+    var waterCan = new Item('water can', 'water-can.jpg', 0, 0, 'water-can');
+    var wineGlass = new Item('wine glass', 'wine-glass.jpg', 0, 0, 'wine-glass');
+}
 
 
 //          DISPLAY & VOTING FUNCTIONS            //
 //literal notation
 var tracker = {
+    //get DOM elements by class name for images and IDs for descriptions
     option1: document.getElementsByClassName('option1')[0],
     option2: document.getElementsByClassName('option2')[0],
     option3: document.getElementsByClassName('option3')[0],
+
+    //ADD product descriptions??
+    // opt1description: document.getElementById('opt1description')[0],
+    // opt2description: document.getElementById('opt2description')[0],
+    // opt3description: document.getElementById('opt3description')[0],
+
     displaySection: document.getElementById('display'),
-    votes: 0,
     firstRound: [],
 
     // get random number within allItems array.length
@@ -54,10 +62,10 @@ var tracker = {
     },
 
 
-    // get random index and push to selected index array
-    getIndex: function (arr) {
-        var selectedIndex = [];
-    },
+    // // get random index and push to selected index array
+    // getIndex: function (arr) {
+    //     var selectedIndex = [];
+    // },
 
 
     //display three options of products, using properties of tracker object
@@ -96,39 +104,44 @@ var tracker = {
         //create array of firstRound results
         this.firstRound = [randNum[0], randNum[1], randNum[2]];
 
-        // console.log(this.firstRound);
-
 
         // append items to DOM
         this.option1.src = item1.filepath;
         this.option2.src = item2.filepath;
         this.option3.src = item3.filepath;
 
-        // console.log(this.option1);
+        //append descriptions to DOM
+        // this.opt1description.innerText = item1.name;
+        // this.opt2description.innerText = item2.name;
+        // this.opt3description.innerText = item3.name;
+
+
+        this.option1.id = item1.id;
+        this.option2.id = item2.id;
+        this.option3.id = item3.id;
 
     },
 
     tallyVote: function (id) {
         this.votes += 1;
 
-        for (var i = 0; i < allItems.length; i++) {
-            var item = allItems[i];
+        allItems.forEach(function foo(item) {
             if (item.id === id) {
                 item.votes += 1;
-
             }
+        });
+
+        if (this.votes > 25) {
+            this.showResults();
         }
     },
 
     showResults: function () {
-        this.displaySection.removeEventListener('click', voteHandler);
-        for (var i = 0; i < 26; i++) {
-            // var item = allItems[i];
-            console.log(item.name + ': ' + item.votes);
-        }
+        this.displaySection.removeEventListener('click', showResults);
+
     }
 
-}
+};
 
 //            EVENT LISTENERS         //
 
@@ -141,4 +154,5 @@ function voteHandler() {
 };
 
 
+instantiateItems();
 tracker.displayOptions();
