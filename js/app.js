@@ -10,6 +10,7 @@ function Item(name, filepath, id) {
     this.name = name;
     this.filepath = 'imgs/' + filepath;
     this.shown = 0;
+    this.clicked = 0;
     this.id = id;
     this.votes = 0;
 
@@ -55,6 +56,7 @@ var tracker = {
 
     imageDisplay: document.getElementById('imageDisplay'),
     votes: 0,
+    shown: 0,
     // get random number within allItems array.length
     randomIndex: function (arr) {
         return Math.floor(Math.random() * allItems.length);
@@ -70,13 +72,15 @@ var tracker = {
 
         //call randomIndex function to generate the random number 
         while (selectedIndex.length < 3) {
-            var item = this.randomIndex(arr);
-            console.log(item);
+            var itemIndex = this.randomIndex(arr);
+
             var previousItems = selectedIndex;
-            console.log(previousItems);
+
             // get random index and push to selected index array
-            if (selectedIndex.indexOf(item) === -1 && previousItems.indexOf(item) === -1) {
-                selectedIndex.push(item);
+            if (selectedIndex.indexOf(itemIndex) === -1 && previousItems.indexOf(itemIndex) === -1) {
+                selectedIndex.push(itemIndex);
+                console.log(allItems[itemIndex]);
+                arr.shown += 1;
             }
         };
         //return items in the index array(items on the screen)
@@ -92,18 +96,22 @@ var tracker = {
         var rand1 = randomItems[0];
         var rand2 = randomItems[1];
         var rand3 = randomItems[2];
-        // console.log(rand1);
-        // console.log(rand2);
-        // console.log(rand3);
+        
 
         var item1 = allItems[rand1];
         var item2 = allItems[rand2];
         var item3 = allItems[rand3];
-        // console.log(item1);
-        // console.log(item2);
-        // console.log(item3);
+        
 
         //TODO append these items to the DOM
+        this.option1.id = item1.id;
+        this.option2.id = item2.id;
+        this.option3.id = item3.id;
+
+        console.log(this.option1.id);
+        console.log(this.option2.id);
+        console.log(this.option3.id);
+
         this.option1.src = item1.filepath;
         this.option2.src = item2.filepath;
         this.option3.src = item3.filepath;
@@ -124,15 +132,17 @@ var tracker = {
         // adding to this item's count every time it is clicked
 
         allItems.forEach(function run(item) {
-            // item id 
+            
             if (item.id === id) {
+                console.log(item.id);
                 item.votes += 1;
+                item.clicked += 1;
             }
         });
         //after 25 clicks/votes, show results
-            if (this.votes > 5) {
-                this.showResults();
-            };
+        if (this.votes > 3) {
+            this.showResults();
+        };
 
     },
 
@@ -153,9 +163,11 @@ function voteHandler() {
     if (event.target.id)
         console.log('clicks');
     tracker.displayOptions();
-    tracker.tallyVote();
+    tracker.tallyVote(event.target.id);
+    console.log(event.target.id);
 };
 
 
 instantiateItems();
 tracker.displayOptions();
+tracker.tallyVote();
