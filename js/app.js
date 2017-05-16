@@ -2,14 +2,14 @@
 console.log(Chart);
 //          DATA            //
 var allItems = [];
+var selectedIndex = [];
 
 //          CONSTRUCTOR FUNCTION & INSTANCES            //
 
-function Item(name, filepath, numShown, numClicked, id) {
+function Item(name, filepath, id) {
     this.name = name;
     this.filepath = 'imgs/' + filepath;
-    this.numShown = 0;
-    this.numClicked = 0;
+    this.shown = 0;
     this.id = id;
     this.votes = 0;
 
@@ -53,8 +53,8 @@ var tracker = {
     opt2description: document.getElementById('opt2description'),
     opt3description: document.getElementById('opt3description'),
 
-    displaySection: document.getElementById('display'),
-
+    imageDisplay: document.getElementById('imageDisplay'),
+    votes: 0,
     // get random number within allItems array.length
     randomIndex: function (arr) {
         return Math.floor(Math.random() * allItems.length);
@@ -62,16 +62,17 @@ var tracker = {
 
 
     getIndex: function (arr) {
-        // var previousItems = [randomItems[0],randomItems[1],randomItems[2]],
 
         //create array that your selected images will be pushed to
-        var selectedIndex = [];
-        var previousItems = [selectedIndex[0], selectedIndex[1], selectedIndex[2]];
+        selectedIndex = [];
+        // create array of selectedIndex's items
+        // var previousItems = [selectedIndex[0], selectedIndex[1], selectedIndex[2]];
 
         //call randomIndex function to generate the random number 
         while (selectedIndex.length < 3) {
             var item = this.randomIndex(arr);
             console.log(item);
+            var previousItems = selectedIndex;
             console.log(previousItems);
             // get random index and push to selected index array
             if (selectedIndex.indexOf(item) === -1 && previousItems.indexOf(item) === -1) {
@@ -91,16 +92,16 @@ var tracker = {
         var rand1 = randomItems[0];
         var rand2 = randomItems[1];
         var rand3 = randomItems[2];
-        console.log(rand1);
-        console.log(rand2);
-        console.log(rand3);
+        // console.log(rand1);
+        // console.log(rand2);
+        // console.log(rand3);
 
         var item1 = allItems[rand1];
         var item2 = allItems[rand2];
         var item3 = allItems[rand3];
-        console.log(item1);
-        console.log(item2);
-        console.log(item3);
+        // console.log(item1);
+        // console.log(item2);
+        // console.log(item3);
 
         //TODO append these items to the DOM
         this.option1.src = item1.filepath;
@@ -115,45 +116,44 @@ var tracker = {
         //checking for duplicates from previous page, check that array
         console.log(randomItems); //this consoles items on current page
 
-        //new array of those array indexes
-
     },
-
-
-
-
 
 
     tallyVote: function (id) {
         this.votes += 1;
+        // adding to this item's count every time it is clicked
 
-        allItems.forEach(function foo(item) {
+        allItems.forEach(function run(item) {
+            // item id 
             if (item.id === id) {
                 item.votes += 1;
             }
         });
+        //after 25 clicks/votes, show results
+            if (this.votes > 5) {
+                this.showResults();
+            };
 
-        if (this.votes > 25) {
-            this.showResults();
-        }
     },
 
     showResults: function () {
-        this.displaySection.removeEventListener('click', showResults);
-        console.log(allItems);
+        this.imageDisplay.removeEventListener('click', voteHandler);
+        console.table(allItems);
 
-    }
+    },
+
+
 
 };
 
 //            EVENT LISTENERS         //
 
-tracker.displaySection.addEventListener('click', voteHandler);
+tracker.imageDisplay.addEventListener('click', voteHandler);
 function voteHandler() {
-    if (event.target.id !== 'display')
-        tracker.tallyVote(event.target.id);
-    console.log(event.target.id);
+    if (event.target.id)
+        console.log('clicks');
     tracker.displayOptions();
+    tracker.tallyVote();
 };
 
 
