@@ -92,6 +92,7 @@ var tracker = {
         var item2 = allItems[randNum[1]];
         var item3 = allItems[randNum[2]];
 
+
         // console.log(allItems);
 
         //create array of firstRound results
