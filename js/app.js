@@ -1,5 +1,5 @@
 'use strict';
-console.log( Chart );
+console.log(Chart);
 //          DATA            //
 var allItems = [];
 
@@ -31,7 +31,7 @@ function instantiateItems() {
     var pen = new Item('pen', 'pen.jpg', 'pen');
     var petSweep = new Item('pet sweep', 'pet-sweep.jpg', 'pet-sweep');
     var scissors = new Item('scissors', 'scissors.jpg', 'scissors');
-    var shark = new Item('shark', 'shark.jpg','shark');
+    var shark = new Item('shark', 'shark.jpg', 'shark');
     var sweep = new Item('sweep', 'sweep.png', 'sweep');
     var tauntaun = new Item('tauntaun', 'tauntaun.jpg', 'tauntaun');
     var unicorn = new Item('unicorn', 'unicorn.jpg', 'unicorn');
@@ -63,80 +63,65 @@ var tracker = {
     },
 
 
-    // // get random index and push to selected index array
-    
+    getIndex: function (arr) {
+        //create array that your selected images will be pushed to
+        var selectedIndex = [];
+
+        //call randomIndex function to generate the random number 
+        while (selectedIndex.length < 3) {
+            var item = this.randomIndex(arr);
+            console.log(item);
+
+            // get random index and push to selected index array
+            if (selectedIndex.indexOf(item) === -1) {
+                selectedIndex.push(item);
+            }
+        }
+        //return items in the index array(items on the screen)
+        return selectedIndex;
+    },
     //display three options of products, using properties of tracker object
 
     displayOptions: function () {
-        //get 3 random items
-        var randNum = [this.randomIndex(), this.randomIndex(), this.randomIndex()];
-        //conditional if pictures are matching
+        //TODO get 3 random items from allItems
+        var randomItems = this.getIndex( allItems);
+        console.log(randomItems);
 
+        var rand1 = randomItems[0];
+        var rand2 = randomItems[1];
+        var rand3 = randomItems[2];
+        console.log(rand1);
+        console.log(rand2);
+        console.log(rand3);
 
-        //run for loop through firstRound array to check against randNum array
-        for (var i = 0; i < this.firstRound.length; i++) {
-            //check if item in randNum array matches item in this.firstRound array
-            if (randNum.indexOf(this.firstRound[i]) !== -1) {
-                randNum[i] = this.randomIndex();
-                console.log(randNum.indexOf(this.firstRound[i]));
-            }
-        }
-
-        var theseDoMatch = randNum[0] === randNum[1] || randNum[0] === randNum[2] || randNum[1] === randNum[2];
-
-        while (theseDoMatch) {
-            //reassign value to variables
-            randNum[0] = this.randomIndex();
-            randNum[1] = this.randomIndex();
-            randNum[2] = this.randomIndex();
-            //rerun 
-            theseDoMatch = randNum[0] === randNum[1] || randNum[0] === randNum[2] || randNum[1] === randNum[2];
-        };
-
-        var item1 = allItems[randNum[0]];
-        var item2 = allItems[randNum[1]];
-        var item3 = allItems[randNum[2]];
-
-        //create array of firstRound results
-        this.firstRound = [randNum[0], randNum[1], randNum[2]];
-
-
-        // append items to DOM
-        this.option1.src = item1.filepath;
-        this.option2.src = item2.filepath;
-        this.option3.src = item3.filepath;
-
-        //append descriptions to DOM
-        // this.opt1description.innerText = item1.name;
-        // this.opt2description.innerText = item2.name;
-        // this.opt3description.innerText = item3.name;
-
-
-        this.option1.id = item1.id;
-        this.option2.id = item2.id;
-        this.option3.id = item3.id;
+        var item1 = allItems[rand1];
+        var item2 = allItems[rand2];
+        var item3 = allItems[rand3];
+        console.log(item1);
+        console.log(item2);
+        console.log(item3);
 
     },
 
-    tallyVote: function (id) {
-        this.votes += 1;
+    // tallyVote: function (id) {
+    //     this.votes += 1;
 
-        allItems.forEach(function foo (item) {
-            if (item.id === id) {
-                item.votes += 1;
-            }
-        });
+    //     allItems.forEach(function foo (item) {
+    //         if (item.id === id) {
+    //             item.votes += 1;
+    //         }
+    //     });
 
-        if (this.votes > 25) {
-            this.showResults();
-        }
-    },
+    //     if (this.votes > 25) {
+    //         this.showResults();
+    //     }
+    // },
 
-    showResults: function () {
-        this.displaySection.removeEventListener('click', showResults);
-        console.log( allItems );
+    // showResults: function () {
+    //     this.displaySection.removeEventListener('click', showResults);
+    //     console.log( allItems );
 
-    }
+    // }
 
 };
 
