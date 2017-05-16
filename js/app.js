@@ -30,13 +30,13 @@ function instantiateItems() {
     var pen = new Item('pen', 'pen.jpg', 'pen');
     var petSweep = new Item('pet sweep', 'pet-sweep.jpg', 'pet-sweep');
     var scissors = new Item('scissors', 'scissors.jpg', 'scissors');
-    var shark = new Item('shark', 'shark.jpg', 0, 0, 'shark');
-    var sweep = new Item('sweep', 'sweep.png', 0, 0, 'sweep');
-    var tauntaun = new Item('tauntaun', 'tauntaun.jpg', 0, 0, 'tauntaun');
-    var unicorn = new Item('unicorn', 'unicorn.jpg', 0, 0, 'unicorn');
-    var usb = new Item('usb', 'usb.gif', 0, 0, 'usb');
-    var waterCan = new Item('water can', 'water-can.jpg', 0, 0, 'water-can');
-    var wineGlass = new Item('wine glass', 'wine-glass.jpg', 0, 0, 'wine-glass');
+    var shark = new Item('shark', 'shark.jpg','shark');
+    var sweep = new Item('sweep', 'sweep.png', 'sweep');
+    var tauntaun = new Item('tauntaun', 'tauntaun.jpg', 'tauntaun');
+    var unicorn = new Item('unicorn', 'unicorn.jpg', 'unicorn');
+    var usb = new Item('usb', 'usb.gif', 'usb');
+    var waterCan = new Item('water can', 'water-can.jpg', 'water-can');
+    var wineGlass = new Item('wine glass', 'wine-glass.jpg', 'wine-glass');
 }
 
 
@@ -63,11 +63,7 @@ var tracker = {
 
 
     // // get random index and push to selected index array
-    // getIndex: function (arr) {
-    //     var selectedIndex = [];
-    // },
-
-
+    
     //display three options of products, using properties of tracker object
 
     displayOptions: function () {
@@ -100,7 +96,6 @@ var tracker = {
         var item2 = allItems[randNum[1]];
         var item3 = allItems[randNum[2]];
 
-
         //create array of firstRound results
         this.firstRound = [randNum[0], randNum[1], randNum[2]];
 
@@ -125,7 +120,7 @@ var tracker = {
     tallyVote: function (id) {
         this.votes += 1;
 
-        allItems.forEach(function foo(item) {
+        allItems.forEach(function foo (item) {
             if (item.id === id) {
                 item.votes += 1;
             }
@@ -138,6 +133,7 @@ var tracker = {
 
     showResults: function () {
         this.displaySection.removeEventListener('click', showResults);
+        console.log( allItems );
 
     }
 
