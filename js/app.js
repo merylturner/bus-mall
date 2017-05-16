@@ -49,13 +49,12 @@ var tracker = {
     option2: document.getElementsByClassName('option2')[0],
     option3: document.getElementsByClassName('option3')[0],
 
-    //ADD product descriptions??
-    // opt1description: document.getElementById('opt1description')[0],
-    // opt2description: document.getElementById('opt2description')[0],
-    // opt3description: document.getElementById('opt3description')[0],
-
+    opt1description: document.getElementById('opt1description'),
+    opt2description: document.getElementById('opt2description'),
+    opt3description: document.getElementById('opt3description'),
+        
     displaySection: document.getElementById('display'),
-    firstRound: [],
+    previousItems: [],
 
     // get random number within allItems array.length
     randomIndex: function (arr) {
@@ -80,27 +79,36 @@ var tracker = {
         //return items in the index array(items on the screen)
         return selectedIndex;
     },
+    
     //display three options of products, using properties of tracker object
-
     displayOptions: function () {
         //TODO get 3 random items from allItems
-        var randomItems = this.getIndex( allItems);
+        var randomItems = this.getIndex(allItems);
         console.log(randomItems);
 
         var rand1 = randomItems[0];
         var rand2 = randomItems[1];
         var rand3 = randomItems[2];
-        console.log(rand1);
-        console.log(rand2);
-        console.log(rand3);
+            console.log(rand1);
+            console.log(rand2);
+            console.log(rand3);
 
         var item1 = allItems[rand1];
         var item2 = allItems[rand2];
         var item3 = allItems[rand3];
-        console.log(item1);
-        console.log(item2);
-        console.log(item3);
+            console.log(item1);
+            console.log(item2);
+            console.log(item3);
 
+        //TODO append these items to the DOM
+        this.option1.src = item1.filepath;
+        this.option2.src = item2.filepath;
+        this.option3.src = item3.filepath;
+
+        console.log(this.opt1description);
+        this.opt1description.innerText = item1.name;
+        this.opt2description.innerText = item2.name;
+        this.opt3description.innerText = item3.name;
     },
 
     // tallyVote: function (id) {
