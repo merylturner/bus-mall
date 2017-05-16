@@ -46,6 +46,7 @@ var tracker = {
     option3: document.getElementsByClassName('option3')[0],
     displaySection: document.getElementById('display'),
     votes: 0,
+    firstRound: [],
 
     // get random number within allItems array.length
     randomIndex: function (arr) {
@@ -64,14 +65,24 @@ var tracker = {
     displayOptions: function () {
         //get 3 random items
         var randNum = [this.randomIndex(), this.randomIndex(), this.randomIndex()];
-    
         //conditional if pictures are matching
+
+
+        //run for loop through firstRound array to check against randNum array
+        for (var i = 0; i < this.firstRound.length; i++) {
+            //check if item in randNum array matches item in this.firstRound array
+            if (randNum.indexOf(this.firstRound[i]) !== -1) {
+                randNum[i] = this.randomIndex();
+                console.log(randNum.indexOf(this.firstRound[i]));
+            }
+        }
+
         var theseDoMatch = randNum[0] === randNum[1] || randNum[0] === randNum[2] || randNum[1] === randNum[2];
 
         while (theseDoMatch) {
             //reassign value to variables
             randNum[0] = this.randomIndex();
-            randNum[1]= this.randomIndex();
+            randNum[1] = this.randomIndex();
             randNum[2] = this.randomIndex();
             //rerun 
             theseDoMatch = randNum[0] === randNum[1] || randNum[0] === randNum[2] || randNum[1] === randNum[2];
@@ -81,26 +92,21 @@ var tracker = {
         var item2 = allItems[randNum[1]];
         var item3 = allItems[randNum[2]];
 
-        console.log(allItems);
+        // console.log(allItems);
 
         //create array of firstRound results
         this.firstRound = [randNum[0], randNum[1], randNum[2]];
 
+        // console.log(this.firstRound);
 
-        //run for loop through firstRound array to check against randNum array
-        for (var i = 0; i < this.firstRound.length; i++) {
-            if (randNum[i] !== this.firstRound[i]) {
-                return randNum[i];
-            }
-
-        }
 
 
         // append items to DOM
         this.option1.src = item1.filepath;
         this.option2.src = item2.filepath;
         this.option3.src = item3.filepath;
-        console.log(this.option1);
+
+        // console.log(this.option1);
 
     },
 
@@ -111,6 +117,7 @@ var tracker = {
             var item = allItems[i];
             if (item.id === id) {
                 item.votes += 1;
+
             }
         }
     },
@@ -118,7 +125,7 @@ var tracker = {
     showResults: function () {
         this.displaySection.removeEventListener('click', voteHandler);
         for (var i = 0; i < 26; i++) {
-            var item = allItems[i];
+            // var item = allItems[i];
             console.log(item.name + ': ' + item.votes);
         }
     }
@@ -131,6 +138,7 @@ tracker.displaySection.addEventListener('click', voteHandler);
 function voteHandler() {
     if (event.target.id !== 'display')
         tracker.tallyVote(event.target.id);
+    console.log(event.target.id);
     tracker.displayOptions();
 };
 
