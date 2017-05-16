@@ -52,9 +52,8 @@ var tracker = {
     opt1description: document.getElementById('opt1description'),
     opt2description: document.getElementById('opt2description'),
     opt3description: document.getElementById('opt3description'),
-        
+
     displaySection: document.getElementById('display'),
-    previousItems: [],
 
     // get random number within allItems array.length
     randomIndex: function (arr) {
@@ -63,23 +62,26 @@ var tracker = {
 
 
     getIndex: function (arr) {
+        // var previousItems = [randomItems[0],randomItems[1],randomItems[2]],
+
         //create array that your selected images will be pushed to
         var selectedIndex = [];
+        var previousItems = [selectedIndex[0], selectedIndex[1], selectedIndex[2]];
 
         //call randomIndex function to generate the random number 
         while (selectedIndex.length < 3) {
             var item = this.randomIndex(arr);
             console.log(item);
-
+            console.log(previousItems);
             // get random index and push to selected index array
-            if (selectedIndex.indexOf(item) === -1) {
+            if (selectedIndex.indexOf(item) === -1 && previousItems.indexOf(item) === -1) {
                 selectedIndex.push(item);
             }
-        }
+        };
         //return items in the index array(items on the screen)
         return selectedIndex;
     },
-    
+
     //display three options of products, using properties of tracker object
     displayOptions: function () {
         //TODO get 3 random items from allItems
@@ -89,47 +91,58 @@ var tracker = {
         var rand1 = randomItems[0];
         var rand2 = randomItems[1];
         var rand3 = randomItems[2];
-            console.log(rand1);
-            console.log(rand2);
-            console.log(rand3);
+        console.log(rand1);
+        console.log(rand2);
+        console.log(rand3);
 
         var item1 = allItems[rand1];
         var item2 = allItems[rand2];
         var item3 = allItems[rand3];
-            console.log(item1);
-            console.log(item2);
-            console.log(item3);
+        console.log(item1);
+        console.log(item2);
+        console.log(item3);
 
         //TODO append these items to the DOM
         this.option1.src = item1.filepath;
         this.option2.src = item2.filepath;
         this.option3.src = item3.filepath;
 
-        console.log(this.opt1description);
+        // console.log(this.opt1description);
         this.opt1description.innerText = item1.name;
         this.opt2description.innerText = item2.name;
         this.opt3description.innerText = item3.name;
+
+        //checking for duplicates from previous page, check that array
+        console.log(randomItems); //this consoles items on current page
+
+        //new array of those array indexes
+
     },
 
-    // tallyVote: function (id) {
-    //     this.votes += 1;
 
-    //     allItems.forEach(function foo (item) {
-    //         if (item.id === id) {
-    //             item.votes += 1;
-    //         }
-    //     });
 
-    //     if (this.votes > 25) {
-    //         this.showResults();
-    //     }
-    // },
 
-    // showResults: function () {
-    //     this.displaySection.removeEventListener('click', showResults);
-    //     console.log( allItems );
 
-    // }
+
+    tallyVote: function (id) {
+        this.votes += 1;
+
+        allItems.forEach(function foo(item) {
+            if (item.id === id) {
+                item.votes += 1;
+            }
+        });
+
+        if (this.votes > 25) {
+            this.showResults();
+        }
+    },
+
+    showResults: function () {
+        this.displaySection.removeEventListener('click', showResults);
+        console.log(allItems);
+
+    }
 
 };
 
