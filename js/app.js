@@ -141,7 +141,7 @@ var tracker = {
             }
         });
         //after 25 clicks/votes, show results
-        if (this.votes > 3) {
+        if (this.votes > 5) {
             this.showResults();
         };
 
@@ -151,29 +151,34 @@ var tracker = {
         this.imageDisplay.removeEventListener('click', voteHandler);
         console.table(allItems);
         // instead of table, we need to run a for loop through allItems to create data array
-        var resultsArray = [];
+        var resultsArrayIds = [];
+        var resultsArrayClicks = [];
         for (var i = 0; i < allItems.length; i++) {
-            resultsArray.push(allItems[i].id);
-            resultsArray.push(allItems[i].clicked);
-            //will need to add clicks for chart
-            console.log(resultsArray);
+            resultsArrayIds.push(allItems[i].id);
+            resultsArrayClicks.push(allItems[i].clicked);
+            //will need array for the ids
+            //will need array for clicks
+            console.log(resultsArrayIds);
+            console.log(resultsArrayClicks);
         }
 
-        // var context = document.getElementbyid('results').getContext('2d');
-        // var itemsClicked = new Chart (canvas, {
-        //     var data = ,
-        //     type: 'bar',
-        //     data: {
-        //         labels: ,
-        //         datasets: [],
+        var canvas = document.getElementById('resultschart');
+        var itemsClicked = new Chart (canvas, {
+            type: 'bar',
+            data: {
+                labels: resultsArrayIds ,
+                datasets: [{
+                    label: '# of clicks',
+                    data: resultsArrayClicks,
+                }],
 
-        //     },
-        //     option: {
-        //         display: true,
-        //         text: 'Items Chosen',
-        //     }
+            },
+            option: {
+                display: true,
+                text: 'Items Chosen',
+            }
 
-        // })
+        })
     
 
 
