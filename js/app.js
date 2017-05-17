@@ -57,6 +57,7 @@ var tracker = {
     imageDisplay: document.getElementById('imageDisplay'),
     votes: 0,
     shown: 0,
+
     // get random number within allItems array.length
     randomIndex: function (arr) {
         return Math.floor(Math.random() * allItems.length);
@@ -122,7 +123,7 @@ var tracker = {
         this.opt3description.innerText = item3.name;
 
         //checking for duplicates from previous page, check that array
-        console.log(randomItems); //this consoles items on current page
+        // console.log(randomItems); //this consoles items on current page
 
     },
 
@@ -149,13 +150,36 @@ var tracker = {
     showResults: function () {
         this.imageDisplay.removeEventListener('click', voteHandler);
         console.table(allItems);
+        // instead of table, we need to run a for loop through allItems to create data array
+        var resultsArray = [];
+        for (var i = 0; i < allItems.length; i++) {
+            resultsArray.push(allItems[i].id);
+            resultsArray.push(allItems[i].clicked);
+            //will need to add clicks for chart
+            console.log(resultsArray);
+        }
 
-    },
+        // var context = document.getElementbyid('results').getContext('2d');
+        // var itemsClicked = new Chart (canvas, {
+        //     var data = ,
+        //     type: 'bar',
+        //     data: {
+        //         labels: ,
+        //         datasets: [],
+
+        //     },
+        //     option: {
+        //         display: true,
+        //         text: 'Items Chosen',
+        //     }
+
+        // })
+    
 
 
 
-};
-
+}
+}
 //            EVENT LISTENERS         //
 
 tracker.imageDisplay.addEventListener('click', voteHandler);
