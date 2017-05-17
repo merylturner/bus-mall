@@ -141,7 +141,7 @@ var tracker = {
             }
         });
         //after 25 clicks/votes, show results
-        if (this.votes > 5) {
+        if (this.votes > 25) {
             this.showResults();
         };
 
@@ -168,14 +168,15 @@ var tracker = {
             data: {
                 labels: resultsArrayIds ,
                 datasets: [{
-                    label: '# of clicks',
+                    label: 'Number of clicks',
                     data: resultsArrayClicks,
                 }],
 
             },
             options: {
+                title: {
                 display: true,
-                text: 'Items Chosen',
+                text: 'Items Chosen'},
                 responsive: false,
                 maintainAspectRatio: true,
             }
