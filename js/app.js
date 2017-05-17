@@ -65,8 +65,9 @@ var tracker = {
 
 
     getIndex: function (arr) {
-
+        console.log('the three previous items were: ' + selectedIndex);
         //create array that your selected images will be pushed to
+        var previousItems = selectedIndex;
         selectedIndex = [];
         // create array of selectedIndex's items
         // var previousItems = [selectedIndex[0], selectedIndex[1], selectedIndex[2]];
@@ -75,12 +76,11 @@ var tracker = {
         while (selectedIndex.length < 3) {
             var itemIndex = this.randomIndex(arr);
 
-            var previousItems = selectedIndex;
 
             // get random index and push to selected index array
             if (selectedIndex.indexOf(itemIndex) === -1 && previousItems.indexOf(itemIndex) === -1) {
                 selectedIndex.push(itemIndex);
-                console.log(allItems[itemIndex]);
+                // console.log(allItems[itemIndex]);
                 allItems[itemIndex].shown += 1;
             }
         };
@@ -92,7 +92,7 @@ var tracker = {
     displayOptions: function () {
         //TODO get 3 random items from allItems
         var randomItems = this.getIndex(allItems);
-        console.log(randomItems);
+        // console.log(randomItems);
 
         var rand1 = randomItems[0];
         var rand2 = randomItems[1];
@@ -129,7 +129,7 @@ var tracker = {
         allItems.forEach(function run(item) {
 
             if (item.id === id) {
-                console.log(item.id);
+                // console.log(item.id);
                 item.votes += 1;
                 item.clicked += 1;
             }
@@ -143,7 +143,7 @@ var tracker = {
 
     showResults: function () {
         this.imageDisplay.removeEventListener('click', voteHandler);
-        console.table(allItems);
+        // console.table(allItems);
         // instead of table, we need to run a for loop through allItems to create data array
         //array for the ids
         var resultsArrayIds = [];
@@ -164,13 +164,14 @@ var tracker = {
                 datasets: [{
                     label: 'Number of clicks',
                     data: resultsArrayClicks,
+                    backgroundColor: 'rgba(200, 51, 62, .5)',
                 }],
 
             },
             options: {
                 title: {
                     display: true,
-                    text: 'Items Chosen'
+                    text: 'Most Popular Items'
                 },
                 responsive: false,
                 maintainAspectRatio: true,
@@ -191,7 +192,7 @@ function voteHandler() {
         console.log('clicks');
     tracker.displayOptions();
     tracker.tallyVote(event.target.id);
-    console.log(event.target.id);
+    // console.log(event.target.id);
 };
 
 
