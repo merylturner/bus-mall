@@ -97,33 +97,27 @@ var tracker = {
         var rand1 = randomItems[0];
         var rand2 = randomItems[1];
         var rand3 = randomItems[2];
-        
+
 
         var item1 = allItems[rand1];
         var item2 = allItems[rand2];
         var item3 = allItems[rand3];
-        
+
 
         //TODO append these items to the DOM
         this.option1.id = item1.id;
         this.option2.id = item2.id;
         this.option3.id = item3.id;
 
-        console.log(this.option1.id);
-        console.log(this.option2.id);
-        console.log(this.option3.id);
-
         this.option1.src = item1.filepath;
         this.option2.src = item2.filepath;
         this.option3.src = item3.filepath;
 
-        // console.log(this.opt1description);
         this.opt1description.innerText = item1.name;
         this.opt2description.innerText = item2.name;
         this.opt3description.innerText = item3.name;
 
-        //checking for duplicates from previous page, check that array
-        // console.log(randomItems); //this consoles items on current page
+
 
     },
 
@@ -133,7 +127,7 @@ var tracker = {
         // adding to this item's count every time it is clicked
 
         allItems.forEach(function run(item) {
-            
+
             if (item.id === id) {
                 console.log(item.id);
                 item.votes += 1;
@@ -151,22 +145,22 @@ var tracker = {
         this.imageDisplay.removeEventListener('click', voteHandler);
         console.table(allItems);
         // instead of table, we need to run a for loop through allItems to create data array
+        //array for the ids
         var resultsArrayIds = [];
+        //array for clicks
         var resultsArrayClicks = [];
         for (var i = 0; i < allItems.length; i++) {
             resultsArrayIds.push(allItems[i].id);
             resultsArrayClicks.push(allItems[i].clicked);
-            //will need array for the ids
-            //will need array for clicks
-            console.log(resultsArrayIds);
-            console.log(resultsArrayClicks);
+            // console.log(resultsArrayIds);
+            // console.log(resultsArrayClicks);
         }
 
         var canvas = document.getElementById('resultschart');
-        var itemsClicked = new Chart (canvas, {
+        var itemsClicked = new Chart(canvas, {
             type: 'bar',
             data: {
-                labels: resultsArrayIds ,
+                labels: resultsArrayIds,
                 datasets: [{
                     label: 'Number of clicks',
                     data: resultsArrayClicks,
@@ -175,18 +169,19 @@ var tracker = {
             },
             options: {
                 title: {
-                display: true,
-                text: 'Items Chosen'},
+                    display: true,
+                    text: 'Items Chosen'
+                },
                 responsive: false,
                 maintainAspectRatio: true,
             }
 
         })
-    
 
 
 
-}
+
+    }
 }
 //            EVENT LISTENERS         //
 
