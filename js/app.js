@@ -19,26 +19,35 @@ function Item(name, filepath, id) {
 };
 
 function instantiateItems() {
-    var bag = new Item('bag', 'bag.jpg', 'bag');
-    var banana = new Item('banana', 'banana.jpg', 'banana');
-    var bathroom = new Item('bathroom', 'bathroom.jpg', 'bathroom');
-    var boots = new Item('boots', 'boots.jpg', 'boots');
-    var breakfast = new Item('breakfast', 'breakfast.jpg', 'breakfast');
-    var bubblegum = new Item('bubblegum', 'bubblegum.jpg', 'bubblegum');
-    var chair = new Item('chair', 'chair.jpg', 'chair');
-    var cthulhu = new Item('cthulhu', 'cthulhu.jpg', 'cthulhu');
-    var dogDuck = new Item('dog duck', 'dog-duck.jpg', 'dog duck');
-    var dragon = new Item('dragon', 'dragon.jpg', 'dragon');
-    var pen = new Item('pen', 'pen.jpg', 'pen');
-    var petSweep = new Item('pet sweep', 'pet-sweep.jpg', 'pet sweep');
-    var scissors = new Item('scissors', 'scissors.jpg', 'scissors');
-    var shark = new Item('shark', 'shark.jpg', 'shark');
-    var sweep = new Item('sweep', 'sweep.png', 'sweep');
-    var tauntaun = new Item('tauntaun', 'tauntaun.jpg', 'tauntaun');
-    var unicorn = new Item('unicorn', 'unicorn.jpg', 'unicorn');
-    var usb = new Item('usb', 'usb.gif', 'usb');
-    var waterCan = new Item('water can', 'water-can.jpg', 'water can');
-    var wineGlass = new Item('wine glass', 'wine-glass.jpg', 'wine glass');
+    if (localStorage.voteData) {
+        //reassigning the value of our allItems array to this data
+        allItems = JSON.parse(localStorage.getItem('voteData'));
+    }
+
+    else {
+        var bag = new Item('bag', 'bag.jpg', 'bag');
+        var banana = new Item('banana', 'banana.jpg', 'banana');
+        var bathroom = new Item('bathroom', 'bathroom.jpg', 'bathroom');
+        var boots = new Item('boots', 'boots.jpg', 'boots');
+        var breakfast = new Item('breakfast', 'breakfast.jpg', 'breakfast');
+        var bubblegum = new Item('bubblegum', 'bubblegum.jpg', 'bubblegum');
+        var chair = new Item('chair', 'chair.jpg', 'chair');
+        var cthulhu = new Item('cthulhu', 'cthulhu.jpg', 'cthulhu');
+        var dogDuck = new Item('dog duck', 'dog-duck.jpg', 'dog duck');
+        var dragon = new Item('dragon', 'dragon.jpg', 'dragon');
+        var pen = new Item('pen', 'pen.jpg', 'pen');
+        var petSweep = new Item('pet sweep', 'pet-sweep.jpg', 'pet sweep');
+        var scissors = new Item('scissors', 'scissors.jpg', 'scissors');
+        var shark = new Item('shark', 'shark.jpg', 'shark');
+        var sweep = new Item('sweep', 'sweep.png', 'sweep');
+        var tauntaun = new Item('tauntaun', 'tauntaun.jpg', 'tauntaun');
+        var unicorn = new Item('unicorn', 'unicorn.jpg', 'unicorn');
+        var usb = new Item('usb', 'usb.gif', 'usb');
+        var waterCan = new Item('water can', 'water-can.jpg', 'water can');
+        var wineGlass = new Item('wine glass', 'wine-glass.jpg', 'wine glass');
+    };
+
+
 }
 
 
@@ -137,24 +146,23 @@ var tracker = {
         //after 25 clicks/votes, show results
         if (this.votes > 25) {
             this.showResults();
+            //add alert to user they've completed their votes
         };
 
     },
 
     showResults: function () {
         this.imageDisplay.removeEventListener('click', voteHandler);
-        // console.table(allItems);
-        // instead of table, we need to run a for loop through allItems to create data array
-        //array for the ids
+
         var resultsArrayIds = [];
-        //array for clicks
         var resultsArrayClicks = [];
+
         for (var i = 0; i < allItems.length; i++) {
             resultsArrayIds.push(allItems[i].id);
             resultsArrayClicks.push(allItems[i].clicked);
-            // console.log(resultsArrayIds);
-            // console.log(resultsArrayClicks);
+
         }
+
 
         var canvas = document.getElementById('resultschart');
         var itemsClicked = new Chart(canvas, {
@@ -179,22 +187,20 @@ var tracker = {
 
         })
 
-
-
-
     }
 }
 //            EVENT LISTENERS         //
 
 tracker.imageDisplay.addEventListener('click', voteHandler);
 function voteHandler() {
-    if (event.target.id)
-        console.log('clicks');
-    tracker.displayOptions();
-    tracker.tallyVote(event.target.id);
-    // console.log(event.target.id);
-};
+    if (event.target.id) {
+        // console.log('clicks');
+        tracker.displayOptions();
+        tracker.tallyVote(event.target.id);
+    }
 
+    localStorage.setItem('voteData', JSON.stringify(allItems));
+};
 
 instantiateItems();
 tracker.displayOptions();
