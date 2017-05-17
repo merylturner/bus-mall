@@ -77,3 +77,15 @@
         this.option1.id = item1.id;
         this.option2.id = item2.id;
         this.option3.id = item3.id;
+
+
+
+
+
+        // for each
+        allItems.forEach(function (item) {
+            console.log(allItems);
+            // if (this.id === id) {
+            //     this.numShown += 1;
+            // };
+        });

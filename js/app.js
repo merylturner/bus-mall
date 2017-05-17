@@ -27,18 +27,18 @@ function instantiateItems() {
     var bubblegum = new Item('bubblegum', 'bubblegum.jpg', 'bubblegum');
     var chair = new Item('chair', 'chair.jpg', 'chair');
     var cthulhu = new Item('cthulhu', 'cthulhu.jpg', 'cthulhu');
-    var dogDuck = new Item('dog duck', 'dog-duck.jpg', 'dog-duck');
+    var dogDuck = new Item('dog duck', 'dog-duck.jpg', 'dog duck');
     var dragon = new Item('dragon', 'dragon.jpg', 'dragon');
     var pen = new Item('pen', 'pen.jpg', 'pen');
-    var petSweep = new Item('pet sweep', 'pet-sweep.jpg', 'pet-sweep');
+    var petSweep = new Item('pet sweep', 'pet-sweep.jpg', 'pet sweep');
     var scissors = new Item('scissors', 'scissors.jpg', 'scissors');
     var shark = new Item('shark', 'shark.jpg', 'shark');
     var sweep = new Item('sweep', 'sweep.png', 'sweep');
     var tauntaun = new Item('tauntaun', 'tauntaun.jpg', 'tauntaun');
     var unicorn = new Item('unicorn', 'unicorn.jpg', 'unicorn');
     var usb = new Item('usb', 'usb.gif', 'usb');
-    var waterCan = new Item('water can', 'water-can.jpg', 'water-can');
-    var wineGlass = new Item('wine glass', 'wine-glass.jpg', 'wine-glass');
+    var waterCan = new Item('water can', 'water-can.jpg', 'water can');
+    var wineGlass = new Item('wine glass', 'wine-glass.jpg', 'wine glass');
 }
 
 
@@ -173,9 +173,11 @@ var tracker = {
                 }],
 
             },
-            option: {
+            options: {
                 display: true,
                 text: 'Items Chosen',
+                responsive: false,
+                maintainAspectRatio: true,
             }
 
         })

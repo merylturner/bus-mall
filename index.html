@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Bus Mall</title>
-    <link href = "css/styles.css" type = "text/css" rel = "stylesheet">
+    <title>BusMall Catalog</title>
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 </head>
+
 <body>
+    <header id="welcomeInfo">
+        <h1> Welcome to BusMall Catalog </h1>
+        <p> We are pleased to invite you to participate in our focus group. We are testing out products for our new catalog and we need your help! 
+            Please vote for the item you would buy by clicking on its photo below. </p>
+    </header>
+    <br/>
     <main>
-        <section> 
-            <h1> Choose Your Favorite Item! </h1>
+        <section id="imageDisplay">
+            <img class="option1" />
+            <img class="option2" />
+            <img class="option3" />
         </section>
-        <section id = "imageDisplay">
-            <img class = "option1"/>
-            <p id = "opt1description"></p>
-            <img class = "option2"/>
-            <p id = "opt2description"></p>
-            <img class = "option3"/>
-            <p id = "opt3description"></p>
+        <section class="descriptions">
+            <p id="opt1description"></p>
+            <p id="opt2description"></p>
+            <p id="opt3description"></p>
         </section>
-        <canvas id = "resultschart" width = "200" height = "200">
+        <canvas id="resultschart" width="800" height="500">
         </canvas>
     </main>
     <footer>
     </footer>
-    <script src = "js/Chart.min.js"> </script>
-    <script src = "js/app.js"> </script>
+    <script src="js/Chart.min.js">
+
+    </script>
+    <script src="js/app.js">
+
+    </script>
 </body>
+
 </html>
