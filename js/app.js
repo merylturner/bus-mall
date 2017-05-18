@@ -42,7 +42,7 @@ function instantiateItems() {
         var sweep = new Item('sweep', 'sweep.png', 'sweep');
         var tauntaun = new Item('tauntaun', 'tauntaun.jpg', 'tauntaun');
         var unicorn = new Item('unicorn', 'unicorn.jpg', 'unicorn');
-        var usb = new Item('usb', 'usb.gif', 'usb');
+        var usb = new Item('USB', 'usb.gif', 'USB');
         var waterCan = new Item('water can', 'water-can.jpg', 'water can');
         var wineGlass = new Item('wine glass', 'wine-glass.jpg', 'wine glass');
     };
@@ -153,7 +153,7 @@ var tracker = {
 
     showResults: function () {
         this.imageDisplay.removeEventListener('click', voteHandler);
-
+        alert('You\'ve used all of your votes!');
         var resultsArrayIds = [];
         var resultsArrayClicks = [];
 
@@ -165,7 +165,7 @@ var tracker = {
 
 
         var canvas = document.getElementById('resultschart');
-        var itemsClicked = new Chart(canvas, {
+        var itemsClicked = new Chart (canvas, {
             type: 'bar',
             data: {
                 labels: resultsArrayIds,
@@ -186,6 +186,8 @@ var tracker = {
             }
 
         })
+        //create message to the user under chart thanking for input
+
 
     }
 }

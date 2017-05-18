@@ -4,17 +4,27 @@
 <head>
     <title>BusMall Catalog</title>
     <link href="css/styles.css" type="text/css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
 </head>
 
 <body>
-    <header id="welcomeInfo">
-        <h1> Welcome to BusMall Catalog </h1>
-        <p> We are pleased to invite you to participate in our focus group. We are testing out products for our new catalog and we need your help! 
-            Please vote for the item you would buy by clicking on its photo below. </p>
+    <header>
+        <h1>BusMall</h1>
+        <nav>
+            <ul>
+                <li>ABOUT</li>
+                <li>CONTACT US</li>
+                <li></li>
+            </ul>
+        </nav>
     </header>
     <br/>
     <main>
+        <section id="welcomeInfo">
+            <h3> Welcome to BusMall Catalog </h3>
+            <p> We are pleased to invite you to participate in our focus group. We are testing out products for our new catalog
+                and we need your help! Please vote for the item you would buy by clicking on its photo below. </p>
+        </section>
         <section id="imageDisplay">
             <img class="option1" />
             <img class="option2" />
@@ -27,15 +37,12 @@
         </section>
         <canvas id="resultschart" width="800" height="500">
         </canvas>
+        <p id="particpate"></p>
     </main>
     <footer>
     </footer>
-    <script src="js/Chart.min.js">
-
-    </script>
-    <script src="js/app.js">
-
-    </script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>

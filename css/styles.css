@@ -1,23 +1,33 @@
-img {
-    /*display: inline;*/
-    /*width: 200px;*/
-    width: 200px;
-    margin: 20px;
-    border: 3px solid lightgrey;
+/*                  GENERAL       */
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
-#display {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+/*font-family: 'Oswald', sans-serif;
+font-family: 'Raleway', sans-serif;*/
+
+
+/*                  HEADER       */
+
+header {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    color: navy;
+    text-align: left;
 }
-.descriptions {
-    margin: 0 auto;
+
+nav {
+    
+    font-size: 16px;
+}
+ul {
+    list-style-type: none;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    margin-top: 10px;
+    flex-direction: row;
+
 }
 
 #welcomeInfo {
@@ -31,17 +41,33 @@ img {
     font-size: 14px;
 }
 
+/*                  VOTING SECTION       */
+img {
+    /*display: inline;*/
+    /*width: 200px;*/
+    width: 300px;
+    margin: 20px;
+    opacity: .5;
+    /*border: 3px solid lightgrey;*/
+}
+
+img:hover {
+    opacity: 1;
+    
+}
+
 p {
     display: inline-block;
-    width: 200px;
+    width: 300px;
     padding: 20px;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
     color: navy;
+    text-transform: capitalize;
 }
 
 * {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Raleway', sans-serif;
     text-align: center;
 }
 
