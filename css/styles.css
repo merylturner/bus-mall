@@ -1,25 +1,33 @@
 /*                  GENERAL       */
-body {
+body, html {
     margin: 0;
     width: 100%;
     height: 100%;
 }
 
-/*font-family: 'Oswald', sans-serif;
-font-family: 'Raleway', sans-serif;*/
-
 
 /*                  HEADER       */
 
 header {
-    font-family: 'Oswald', sans-serif;
-    font-size: 30px;
+    background-color: lightgrey;
+    margin-top: 0;
+    margin: 0;
+    height: 200px;
+}
+
+h1 {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 60px;
+    font-weight: 800;
     color: navy;
-    text-align: left;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+
 }
 
 nav {
-    
+    font-family: 'Raleway', sans-serif;
     font-size: 16px;
 }
 ul {
@@ -63,7 +71,7 @@ p {
     font-size: 18px;
     text-align: center;
     color: navy;
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
 }
 
 * {
