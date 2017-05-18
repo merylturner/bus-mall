@@ -9,44 +9,68 @@ body, html {
 /*                  HEADER       */
 
 header {
-    background-color: lightgrey;
     margin-top: 0;
     margin: 0;
     height: 200px;
+    padding-top: 50px;
+    
+}
+
+#nameAndLogos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
     font-family: 'Alegreya Sans SC', sans-serif;
     font-size: 60px;
     font-weight: 800;
-    color: navy;
+    color: darkgrey;
     text-align: center;
+    letter-spacing: 2px;
     text-transform: uppercase;
     margin: 0;
-
 }
 
-nav {
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-}
-ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-
+/*     welcome to busmall catalog     */
+h4 {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 25px;
+    letter-spacing: 5px;
+    color: white;;
+    background-color: darkgrey;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-top: 0;
+    margin-top: 10px;
+    height: 30px;
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 #welcomeInfo {
     text-align: center;
     width: 800px;
-    color:navy;
+    color:darkgrey;
     margin: 0 auto;
 }
 #welcomeInfo p {;
     display: inline;
-    font-size: 14px;
+    font-size: 16px;
+}
+
+.headerlogo {
+    height: 100px;
+    width: 100px;
+}
+
+hr {
+    background-color: #fff;
+	border-top: 2px dotted darkgrey;
+    margin: 50px 200px;
 }
 
 /*                  VOTING SECTION       */
@@ -59,7 +83,7 @@ img {
     /*border: 3px solid lightgrey;*/
 }
 
-img:hover {
+main img:hover {
     opacity: 1;
     
 }
@@ -68,9 +92,9 @@ p {
     display: inline-block;
     width: 300px;
     padding: 20px;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
-    color: navy;
+    color: darkgrey;
     /*text-transform: capitalize;*/
 }
 

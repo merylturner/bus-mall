@@ -172,7 +172,7 @@ var tracker = {
                 datasets: [{
                     label: 'Number of clicks',
                     data: resultsArrayClicks,
-                    backgroundColor: 'rgba(200, 51, 62, .5)',
+                    backgroundColor: 'rgba(24, 127, 225, .5)',
                 }],
 
             },
