@@ -64,7 +64,7 @@ var tracker = {
     opt3description: document.getElementById('opt3description'),
 
     imageDisplay: document.getElementById('imageDisplay'),
-    votes: 0,
+    votes: JSON.parse(localStorage.getItem('currentUserVotes')) || 0,
     shown: 0,
 
     // get random number within allItems array.length
@@ -144,8 +144,10 @@ var tracker = {
             }
         });
         //after 25 clicks/votes, show results
-        if (this.votes > 25) {
+        if (this.votes >= 5) {
             this.showResults();
+            this.votes = 0;
+            localStorage.removeItem('currentUserVotes');
             //add alert to user they've completed their votes
         };
 
@@ -186,7 +188,6 @@ var tracker = {
             }
 
         })
-        //create message to the user under chart thanking for input
 
 
     }
@@ -202,8 +203,9 @@ function voteHandler() {
     }
 
     localStorage.setItem('voteData', JSON.stringify(allItems));
+    localStorage.setItem('currentUserVotes', JSON.stringify(tracker.votes));
 };
 
 instantiateItems();
 tracker.displayOptions();
-tracker.tallyVote();
+// tracker.tallyVote();
