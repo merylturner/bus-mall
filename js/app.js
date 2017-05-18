@@ -153,7 +153,7 @@ var tracker = {
 
     showResults: function () {
         this.imageDisplay.removeEventListener('click', voteHandler);
-        alert('You\'ve used all of your votes!');
+        alert('Thanks for participating! You\'ve used all of your votes.');
         var resultsArrayIds = [];
         var resultsArrayClicks = [];
 

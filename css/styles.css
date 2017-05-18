@@ -72,6 +72,42 @@ hr {
 	border-top: 2px dotted darkgrey;
     margin: 50px 200px;
 }
+/*                  VOTING SECTION       */
+
+#form {
+    margin: 0 auto;
+    border: none;
+    display: block;
+    position: relative;
+    margin-bottom: 100px;
+    color: darkgrey;
+}
+ul {
+    list-style-type: none;
+    display: inline;
+}
+li {
+    font-family: 'Raleway', sans-serif;
+}
+
+button {
+    background-color:darkgrey;
+	outline: none;
+	border-radius: 3px;
+	padding: 10px 40px;
+	color:white;
+	text-transform: uppercase;
+	font-family: 'Raleway', sans-serif;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.41);
+	margin-top: 50px;
+	border:3px solid transparent;
+    letter-spacing: 2px;
+}
+button:hover{
+    background-color: rgb(24, 127, 225);
+}
+
+
 
 /*                  VOTING SECTION       */
 img {
@@ -80,11 +116,13 @@ img {
     width: 300px;
     margin: 20px;
     opacity: .5;
+    /*background-color: rgba(0,0,0,.5);*/
     /*border: 3px solid lightgrey;*/
 }
 
 main img:hover {
     opacity: 1;
+    /*color: rgba(0,0,0,0);*/
     
 }
 
