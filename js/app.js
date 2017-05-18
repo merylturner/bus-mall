@@ -3,7 +3,7 @@ console.log(Chart);
 //          DATA            //
 var allItems = [];
 var selectedIndex = [];
-
+var MAX_CLICKS_PER_USER = 5;
 //          CONSTRUCTOR FUNCTION & INSTANCES            //
 
 function Item(name, filepath, id) {
@@ -144,7 +144,7 @@ var tracker = {
             }
         });
         //after 25 clicks/votes, show results
-        if (this.votes >= 5) {
+        if (this.votes >= MAX_CLICKS_PER_USER) {
             this.showResults();
             this.votes = 0;
             localStorage.removeItem('currentUserVotes');
@@ -158,12 +158,16 @@ var tracker = {
         alert('Thanks for participating! You\'ve used all of your votes.');
         var resultsArrayIds = [];
         var resultsArrayClicks = [];
+        var resultsArrayShown = [];
 
         for (var i = 0; i < allItems.length; i++) {
             resultsArrayIds.push(allItems[i].id);
             resultsArrayClicks.push(allItems[i].clicked);
-
+            resultsArrayShown.push(allItems[i].shown);
         }
+
+
+        
 
 
         var canvas = document.getElementById('resultschart');
@@ -172,10 +176,15 @@ var tracker = {
             data: {
                 labels: resultsArrayIds,
                 datasets: [{
-                    label: 'Number of clicks',
+                    label: 'User Clicks Per Product',
                     data: resultsArrayClicks,
                     backgroundColor: 'rgba(24, 127, 225, .5)',
-                }],
+                },
+                {
+                    label: 'Number of Times Product Shown',
+                    data: resultsArrayShown,
+                    backgroundColor: 'rgba(240, 127, 225, .5)',
+                }]
 
             },
             options: {
@@ -198,8 +207,8 @@ tracker.imageDisplay.addEventListener('click', voteHandler);
 function voteHandler() {
     if (event.target.id) {
         // console.log('clicks');
-        tracker.displayOptions();
         tracker.tallyVote(event.target.id);
+        tracker.displayOptions();
     }
 
     localStorage.setItem('voteData', JSON.stringify(allItems));
