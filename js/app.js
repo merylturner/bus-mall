@@ -166,11 +166,11 @@ var tracker = {
         }
 
 
-        
+
 
 
         var canvas = document.getElementById('resultschart');
-        var itemsClicked = new Chart (canvas, {
+        var itemsClicked = new Chart(canvas, {
             type: 'bar',
             data: {
                 labels: resultsArrayIds,
