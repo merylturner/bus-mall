@@ -34,6 +34,19 @@ h1 {
     margin: 0;
 }
 
+
+#nameAndLogos h1:hover {
+    animation: change 4s ease-in-out 0s infinite alternate;
+}
+
+
+@keyframes change {
+    0% {left:20%;top: 50%;font-size:60px}
+    50% {color:#63DC90}
+    100% {left:50%;top: 60%;font-size:100px}
+    
+}
+
 /*     welcome to busmall catalog     */
 h4 {
     font-family: 'Alegreya Sans SC', sans-serif;
@@ -57,9 +70,15 @@ h4 {
     color:darkgrey;
     margin: 0 auto;
 }
+#welcomeInfo h5 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: black;
+}
 #welcomeInfo p {;
     display: inline;
-    font-size: 16px;
+    font-size: 14px;
+    color: black;
 }
 
 .headerlogo {
@@ -72,6 +91,7 @@ hr {
 	border-top: 2px dotted darkgrey;
     margin: 50px 200px;
 }
+
 /*                  VOTING SECTION       */
 
 #form {
@@ -80,11 +100,10 @@ hr {
     border: none;
     display: block;
     position: relative;
+    margin-top: 100px;
     margin-bottom: 100px;
     color: white;
-    background-color: lightgrey;    
-    /*border: 5px solid #63DC90;*/
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+    background-color: darkgrey;    
 }
 h2 {
     color: white;
@@ -99,14 +118,10 @@ li {
     color: white;
     display: inline;
 }
-li:hover {
-    color:#70c6c7;
-}
 
 
 
 button {
-    /*background-color:rgb(24, 127, 225);*/
     background-color:#63DC90;
 	outline: none;
 	border-radius: 3px;
@@ -138,8 +153,7 @@ img {
 }
 
 main img:hover {
-    opacity: 1;
-    
+    opacity: 1;    
 }
 
 h6 {
@@ -158,14 +172,16 @@ p {
     font-size: 14px;
     text-align: center;
     color: black;
-    text-transform: capitalize;
+    
 }
 
+/*                  ALL FONTS       */
 * {
     font-family: 'Raleway', sans-serif;
     text-align: center;
 }
 
+/*                  CHART           */
 canvas {
     margin: 0 auto;
     margin-top: 100px;
