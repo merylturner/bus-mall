@@ -1,0 +1,188 @@
+/*                  GENERAL       */
+body, html {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*                  HEADER       */
+
+header {
+    margin-top: 0;
+    margin: 0;
+    height: 200px;
+    padding-top: 50px;
+    
+}
+
+#nameAndLogos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 60px;
+    font-weight: 800;
+    color: darkgrey;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+
+#nameAndLogos h1:hover {
+    animation: change 4s ease-in-out 0s infinite alternate;
+}
+
+
+@keyframes change {
+    0% {left:20%;top: 50%;font-size:60px}
+    50% {color:#63DC90}
+    100% {left:50%;top: 60%;font-size:100px}
+    
+}
+
+/*     welcome to busmall catalog     */
+h4 {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 25px;
+    letter-spacing: 5px;
+    color: white;;
+    background-color: darkgrey;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-top: 0;
+    margin-top: 10px;
+    height: 30px;
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#welcomeInfo {
+    text-align: center;
+    width: 800px;
+    color:darkgrey;
+    margin: 0 auto;
+}
+#welcomeInfo h5 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: black;
+}
+#welcomeInfo p {;
+    display: inline;
+    font-size: 14px;
+    color: black;
+}
+
+.headerlogo {
+    height: 100px;
+    width: 100px;
+}
+
+hr {
+    background-color: #fff;
+	border-top: 2px dotted darkgrey;
+    margin: 50px 200px;
+}
+
+/*                  VOTING SECTION       */
+
+#form {
+    margin-left: 200px;
+    margin-right: 200px;
+    border: none;
+    display: block;
+    position: relative;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    color: white;
+    background-color: darkgrey;    
+}
+h2 {
+    color: white;
+    padding-top: 20px;
+}
+ul {
+    list-style-type: none;
+    display: inline;
+}
+li {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    display: inline;
+}
+
+
+
+button {
+    background-color:#63DC90;
+	outline: none;
+	border-radius: 3px;
+	padding: 10px 40px;
+	color:white;
+	text-transform: uppercase;
+	font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+	margin-top: 50px;
+    margin-bottom: 20px;
+	border:3px solid transparent;
+    letter-spacing: 2px;
+    
+}
+button:hover{
+    box-shadow: inset 0 0 0 25px rgba(0,0,0,.2);
+}
+
+
+
+/*                  VOTING SECTION       */
+
+img {
+    width: 300px;
+    margin: 20px;
+    opacity: .5;
+    
+}
+
+main img:hover {
+    opacity: 1;    
+}
+
+h6 {
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+    font-size: 18px;
+    color:black;
+    margin-bottom: 30px;
+}
+
+p {
+    display: inline-block;
+    width: 300px;
+    padding: 20px;
+    font-size: 14px;
+    text-align: center;
+    color: black;
+    
+}
+
+/*                  ALL FONTS       */
+* {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+/*                  CHART           */
+canvas {
+    margin: 0 auto;
+    margin-top: 100px;
+}
