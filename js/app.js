@@ -1,9 +1,13 @@
 'use strict';
 console.log(Chart);
+
+
 //          DATA            //
 var allItems = [];
 var selectedIndex = [];
 var MAX_CLICKS_PER_USER = 25;
+
+
 //          CONSTRUCTOR FUNCTION & INSTANCES            //
 
 function Item(name, filepath, id) {
@@ -79,7 +83,6 @@ var tracker = {
         var previousItems = selectedIndex;
         selectedIndex = [];
         // create array of selectedIndex's items
-        // var previousItems = [selectedIndex[0], selectedIndex[1], selectedIndex[2]];
 
         //call randomIndex function to generate the random number 
         while (selectedIndex.length < 3) {
@@ -97,11 +100,9 @@ var tracker = {
         return selectedIndex;
     },
 
-    //display three options of products, using properties of tracker object
     displayOptions: function () {
         //TODO get 3 random items from allItems
         var randomItems = this.getIndex(allItems);
-        // console.log(randomItems);
 
         var rand1 = randomItems[0];
         var rand2 = randomItems[1];
@@ -138,7 +139,6 @@ var tracker = {
         allItems.forEach(function run(item) {
 
             if (item.id === id) {
-                // console.log(item.id);
                 item.votes += 1;
                 item.clicked += 1;
             }
@@ -148,7 +148,6 @@ var tracker = {
             this.showResults();
             this.votes = 0;
             localStorage.removeItem('currentUserVotes');
-            //add alert to user they've completed their votes
         };
 
     },
@@ -206,7 +205,6 @@ var tracker = {
 tracker.imageDisplay.addEventListener('click', voteHandler);
 function voteHandler() {
     if (event.target.id) {
-        // console.log('clicks');
         tracker.tallyVote(event.target.id);
         tracker.displayOptions();
     }
@@ -217,4 +215,4 @@ function voteHandler() {
 
 instantiateItems();
 tracker.displayOptions();
-// tracker.tallyVote();
+
