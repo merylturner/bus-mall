@@ -3,7 +3,7 @@ console.log(Chart);
 //          DATA            //
 var allItems = [];
 var selectedIndex = [];
-var MAX_CLICKS_PER_USER = 5;
+var MAX_CLICKS_PER_USER = 25;
 //          CONSTRUCTOR FUNCTION & INSTANCES            //
 
 function Item(name, filepath, id) {
@@ -178,12 +178,12 @@ var tracker = {
                 datasets: [{
                     label: 'User Clicks Per Product',
                     data: resultsArrayClicks,
-                    backgroundColor: 'rgba(24, 127, 225, .5)',
+                    backgroundColor: '#70C7C7',
                 },
                 {
                     label: 'Number of Times Product Shown',
                     data: resultsArrayShown,
-                    backgroundColor: 'rgba(240, 127, 225, .5)',
+                    backgroundColor: '#63dc90',
                 }]
 
             },

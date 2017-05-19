@@ -82,8 +82,9 @@ hr {
     position: relative;
     margin-bottom: 100px;
     color: white;
-    background-color: darkgrey;
-    border: 5px solid #63DC90;
+    background-color: lightgrey;    
+    /*border: 5px solid #63DC90;*/
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
 h2 {
     color: white;
@@ -99,7 +100,7 @@ li {
     display: inline;
 }
 li:hover {
-    color:purple;
+    color:#70c6c7;
 }
 
 
